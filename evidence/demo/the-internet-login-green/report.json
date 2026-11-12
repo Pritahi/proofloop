@@ -1,0 +1,26 @@
+{
+  "id": "run-1794450139730",
+  "url": "https://the-internet.herokuapp.com/login",
+  "goal": "Log in with username tomsmith and password SuperSecretPassword! and assert the page shows You logged into a secure area!",
+  "brain": "heuristic",
+  "verdict": "green",
+  "summary": "All 1 check pass. Kane verified the flow end to end.",
+  "results": [
+    {
+      "id": "ac-1",
+      "objective": "Log in with username tomsmith and password SuperSecretPassword! and assert the page shows You logged into a secure area!. If anything blocks this flow, stop and report what you saw.",
+      "verdict": "pass",
+      "reason": "Objective completed",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "one_liner": "logged in to the secure area on the-internet.herokuapp.com",
+          "test_url": "https://test-manager.lambdatest.com/projects/01M76RYCPN1R2R2JTYZQWTW214/test-cases/01M76S0BT96GHRT0BVNDQWYBEP/dashboard/share/US_GMMD99DOXIL2L9K26YO4XZ3JOH583FRQS4EEI7H1G4TPVLV1AJIUOZWF4VBR8T7S?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "evidence": null
+    }
+  ],
+  "finishedAt": "2026-11-12T02:23:23.502Z"
+}

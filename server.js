@@ -13,7 +13,7 @@ const jobs = new Map(); // id -> { events: [], listeners: Set<res>, report }
 
 function send(res, code, body, type = 'application/json') {
   res.writeHead(code, { 'Content-Type': type, 'Cache-Control': 'no-store' });
-  res.end(typeof body === 'string' ? body : JSON.stringify(body));
+  res.end(typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body));
 }
 
 function readBody(req) {
@@ -76,7 +76,8 @@ const server = http.createServer(async (req, res) => {
   // static
   let fp = path.normalize(path.join(PUBLIC, u.pathname === '/' ? 'index.html' : u.pathname));
   if (!fp.startsWith(PUBLIC)) return send(res, 403, { error: 'nope' });
-  if (!fs.existsSync(fp) || fs.statSync(fp).isDirectory()) return send(res, 404, { error: 'not found' });
+  if (fs.existsSync(fp) && fs.statSync(fp).isDirectory()) fp = path.join(fp, 'index.html');
+  if (!fs.existsSync(fp)) return send(res, 404, { error: 'not found' });
   return send(res, 200, fs.readFileSync(fp), MIME[path.extname(fp)] || 'application/octet-stream');
 });
 

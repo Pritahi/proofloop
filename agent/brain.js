@@ -34,7 +34,7 @@ class HeuristicBrain {
 
 class GeminiBrain {
   name = 'gemini';
-  constructor(apiKey, model = 'gemini-2.5-flash-lite') {
+  constructor(apiKey, model = 'gemini-3.5-flash-lite') {
     this.apiKey = apiKey;
     this.model = model;
   }

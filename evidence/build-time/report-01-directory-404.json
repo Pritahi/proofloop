@@ -1,0 +1,29 @@
+{
+  "id": "run-1794450288490",
+  "url": "http://localhost:7860/demo/?bug=1",
+  "goal": "A visitor can type their email, click Join the waiting list, and see a welcome message confirming they are on the list.",
+  "brain": "heuristic",
+  "verdict": "bug_found",
+  "summary": "Kane found a real problem: The starting page only displays {\"error\":\"not found\"}; no email field or waiting-list button exists.",
+  "results": [
+    {
+      "id": "ac-1",
+      "objective": "A visitor can type their email, click Join the waiting list, and see a welcome message confirming they are on the list. If anything blocks this flow, stop and report what you saw.",
+      "verdict": "bug",
+      "reason": "The starting page only displays {\"error\":\"not found\"}; no email field or waiting-list button exists.",
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "failed",
+          "one_liner": "The run opened a page address that returned “not found,” so the waiting-list form never loaded.",
+          "test_url": "https://test-manager.lambdatest.com/projects/01M76RYCPN1R2R2JTYZQWTW214/test-cases/01M76S4X8FFN9VZ8G180X004EW/dashboard/share/US_VWL1C49GYVHGBFRL0CA2MDAGAH2ULIZCZX7GDGO3UT3E71Q2R5GPMVXDJQGPEWKH?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "evidence": {
+        "one_liner": "The run opened a page address that returned “not found,” so the waiting-list form never loaded.",
+        "test_url": "https://test-manager.lambdatest.com/projects/01M76RYCPN1R2R2JTYZQWTW214/test-cases/01M76S4X8FFN9VZ8G180X004EW/dashboard/share/US_VWL1C49GYVHGBFRL0CA2MDAGAH2ULIZCZX7GDGO3UT3E71Q2R5GPMVXDJQGPEWKH?type=summary&agentView=true&fqdn=summary-page"
+      }
+    }
+  ],
+  "finishedAt": "2026-11-12T02:25:23.330Z"
+}
