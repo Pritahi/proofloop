@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProofLoop - the agent that proves your app works</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">Proof<span>Loop</span></div>
+  <div class="tagline">Point it at your app. It writes the checks, Kane CLI runs them, the agent reads the failures. Loop closes.</div>
+</header>
+
+<main>
+  <section class="card" id="input-card">
+    <label>Your app's URL</label>
+    <input id="url" type="url" placeholder="https://your-app.com" autocomplete="off">
+    <label>What should work? (plain English)</label>
+    <textarea id="goal" rows="3" placeholder="A visitor can sign up with an email, land on the dashboard, and see their name in the top bar."></textarea>
+    <button id="run-btn">Run the agent</button>
+    <div class="hint">Powered by <code>kane-cli run --agent</code>. Every step below is Kane's real NDJSON stream.</div>
+  </section>
+
+  <section class="card hidden" id="live-card">
+    <div class="live-head">
+      <h2>Live run</h2>
+      <div id="phase" class="phase">starting</div>
+    </div>
+    <ol id="timeline" class="timeline"></ol>
+    <div class="stream-wrap">
+      <div class="stream-title">kane-cli --agent (NDJSON, verbatim)</div>
+      <pre id="stream" class="stream"></pre>
+    </div>
+  </section>
+
+  <section class="card hidden" id="verdict-card">
+    <h2 id="verdict-title"></h2>
+    <p id="verdict-summary"></p>
+    <div id="verdict-details"></div>
+    <button id="again-btn">Check something else</button>
+  </section>
+</main>
+
+<footer>
+  Built by an AI coding agent during the Kane CLI Online Hackathon. Verified by <a href="https://www.testmuai.com/kane-cli/">Kane CLI</a>.
+  <a href="https://github.com/Pritahi/proofloop">Source</a>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
