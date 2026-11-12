@@ -34,7 +34,7 @@
 const BUG = new URLSearchParams(location.search).get('bug') === '1';
 document.getElementById('signup').addEventListener('submit', (e) => {
   e.preventDefault();
-  if (BUG) { document.getElementById('err').style.display = 'none'; return; } // silent dead button
+  if (BUG) { document.getElementById('welcome').style.display = 'none'; document.getElementById('err').style.display = 'block'; return; } // signup API "fails": user sees an error
   const email = document.getElementById('email').value.trim();
   if (!email) return;
   document.getElementById('welcome').style.display = 'block';

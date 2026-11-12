@@ -1,5 +1,5 @@
 {
-  "id": "run-1794450425783",
+  "id": "run-1794450694696",
   "url": "http://localhost:7860/demo/",
   "goal": "A visitor can type their email, click Join the waiting list, and see a welcome message confirming they are on the list.",
   "brain": "gemini",
@@ -8,7 +8,7 @@
   "results": [
     {
       "id": "ac-1",
-      "objective": "Open http://localhost:7860/demo/, type a valid email address into the email input field, click the 'Join the waiting list' button, and verify that a welcome message confirming placement on the list is displayed.",
+      "objective": "Open http://localhost:7860/demo/, type a valid email address into the email input field, click the 'Join the waiting list' button, and verify that a welcome message confirms the user is successfully on the list.",
       "verdict": "pass",
       "reason": "Objective completed",
       "attempts": [
@@ -16,11 +16,11 @@
           "attempt": 1,
           "status": "passed",
           "one_liner": "joined the waiting list on the demo page",
-          "test_url": "https://test-manager.lambdatest.com/projects/01M76RYCPN1R2R2JTYZQWTW214/test-cases/01M76S93SJRK58RQ19Y7DYGY06/dashboard/share/US_VMNZ7LQ7MAWLHMLPT5KFY9ZOTB141FUL6UO4TU6JI1F816XML9FVKGBNYJ0FTLX1?type=summary&agentView=true&fqdn=summary-page"
+          "test_url": "https://test-manager.lambdatest.com/projects/01M76RYCPN1R2R2JTYZQWTW214/test-cases/01M76SHAY859NVXM8NJ4GNTZ4W/dashboard/share/US_9MGUV9VNBB5ADGBHBNJJZXGZ19O4SM5T2PG2L3N165CDHKR4NLCL5MR5OHLCP1EP?type=summary&agentView=true&fqdn=summary-page"
         }
       ],
       "evidence": null
     }
   ],
-  "finishedAt": "2026-11-12T02:27:46.590Z"
+  "finishedAt": "2026-11-12T02:32:17.466Z"
 }
