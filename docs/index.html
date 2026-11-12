@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProofLoop - recorded live runs</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">Proof<span>Loop</span></div>
+  <div class="tagline">This page replays two REAL recorded runs (verbatim Kane CLI NDJSON, captured 12 Nov 2026). To run live against your own app: <code>npm start</code> from the <a href="https://github.com/Pritahi/proofloop">repo</a>.</div>
+</header>
+<main>
+  <section class="card">
+    <h2>Run 1 - the buggy build: Kane catches a dead signup button</h2>
+    <p class="hint">Target: the demo waitlist page shipped with a silent bug (<code>?bug=1</code>). Goal: "A visitor can type their email, click Join the waiting list, and see a welcome message."</p>
+    <div class="stream-wrap"><div class="stream-title">kane-cli --agent (NDJSON, verbatim)</div><pre id="stream1" class="stream"></pre></div>
+    <div id="verdict1"></div>
+  </section>
+  <section class="card">
+    <h2>Run 2 - the fixed build: same check goes green</h2>
+    <div class="stream-wrap"><div class="stream-title">kane-cli --agent (NDJSON, verbatim)</div><pre id="stream2" class="stream"></pre></div>
+    <div id="verdict2"></div>
+  </section>
+</main>
+<footer>Built by an AI coding agent during the Kane CLI Online Hackathon. Verified by <a href="https://www.testmuai.com/kane-cli/">Kane CLI</a>. <a href="https://github.com/Pritahi/proofloop">Source</a></footer>
+<script>
+const esc=(s)=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function line(el,t,cls){const d=document.createElement('div');if(cls)d.className=cls;d.textContent=t;el.appendChild(d);el.scrollTop=el.scrollHeight;}
+async function play(run, streamEl, verdictEl){
+  for(const e of run.events){
+    if(e.step&&e.status==='running') line(streamEl,`  [${e.step}] ${e.remark}`);
+    else if(e.step&&e.status) line(streamEl,`  [${e.step}] ${e.status}: ${e.remark}`,e.status==='failed'?'failed':null);
+    else if(e.type==='run_end') line(streamEl,`run_end: ${e.status} - ${e.one_liner||e.reason||''}`,e.status==='passed'?'passed':'failed');
+    await new Promise(r=>setTimeout(r, e.type==='run_end'?400:180));
+  }
+  const r=run.report;
+  verdictEl.innerHTML=`<div class="evidence"><b>Agent verdict: ${esc(r.verdict==='green'?'GREEN':'BUG FOUND')}</b> - ${esc(r.summary)}</div>`;
+}
+fetch('replay-data.json').then(r=>r.json()).then(async (d)=>{
+  await play(d.buggy, document.getElementById('stream1'), document.getElementById('verdict1'));
+  await play(d.fixed, document.getElementById('stream2'), document.getElementById('verdict2'));
+});
+</script>
+</body>
+</html>
